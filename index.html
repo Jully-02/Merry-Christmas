@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+
+    <!-- Embed fonts -->
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+
+    <!-- Main CSS-->
+    <link rel="stylesheet" href="./assets/css/main.css">
+
+    <script src="https://kit.fontawesome.com/b0599c4749.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="fadeIn">
+    <audio id="myAudio" autoplay>
+        <source src="./assets/media/Merry Christmas.mp3" type="audio/mp3">
+    </audio>
+    <div class="main">
+        <div id='snowflakeContainer'>
+            <p class='snowflake'>❄</p>
+        </div>
+        <div class="boder">
+            <div class="pearlright">
+                <img src="./assets/images/pearl.svg" alt="Pearl">
+            </div>
+            <div class="pearlleft">
+                <img src="./assets/images/pearl1.svg" alt="Pearl">
+            </div>
+            <div class="boderRight">
+                <img src="./assets/images/boderright.svg" alt="Boder">
+            </div>
+            <div class="boderLeft">
+                <img src="./assets/images/boderleft.svg" alt="Boder">
+            </div>
+        </div>
+        <div class="logo">
+            <img src="./assets/images/logo.svg" alt="Logo Merry Christmas">
+        </div>
+        <div class="pinetree">
+            <img src="./assets/images/Pine Tree.svg" alt="Pine Tree">
+        </div>
+        <div class="snow">
+            <img src="./assets/images/snow.svg" alt="Snow">
+        </div>
+        <div class="santaClaus">
+            <img src="./assets/images/SantaClaus.svg" alt="Santa Claus">
+        </div>
+        <div class="btn_show">
+            <a href="#" class="btn" onclick="showChristmasCard()">Click Here</a>
+        </div>
+        <div class="overlay" id="overlay" onclick="hideChristmasCard()"></div>
+        <div class="christmas-card" id="christmasCard">
+            <div class="card-front">
+                <div class="card">
+                    <div class="card-bg">
+                        <img src="./assets/images/card-bg.jpg" alt="Card Background">
+                    </div>
+                    <div class="title">
+                        <h2>Merry</h2>
+                        <h1>Christmas</h1>
+                        <h3 class ="hny">& Happy New Year</h3>
+                    </div>
+                    <div class="images">
+                        <img src="./assets/images/santa.png" class="santa" alt="Santa">
+                        <img src="./assets/images/tree.png" alt="tree" class="tree">
+                    </div>
+                </div>
+            </div>
+            <div class="card-inside">
+                <div class="card">
+                    <div class="card-bg">
+                        <img src="./assets/images/card-bg.jpg" alt="Card Background">
+                    </div>
+                    <div class="title">
+                        <h3 class="wish">Wishing the girl I love a peaceful and warm Christmas. With lots of joy and happiness. Wishing the best things will come to you. Thank you for coming with the winter season!
+                        <br/>-- Jully --</h3>
+                        <div class="gift">
+                            <div class="bow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_close" onclick="hideChristmasCard()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+        </div>
+</body>
+<!-- <script type="text/javascript">
+    const container = document.querySelector(".christmas-card");
+    const card = document.querySelector(".card");
+
+    // card rotate on mouse move
+    container.addEventListener("mousemove", (rotate) => {
+        let x = (innerWidth / 2 - rotate.pageX) / 15;
+        let y = (innerHeight / 2 - rotate.pageY) / 15;
+
+        card.style.transform = "rotateY(" + x + "deg) rotateX(" + y + "deg)";
+    });
+</script> -->
+<script>
+    function showChristmasCard() {
+        var christmasCard = document.getElementById("christmasCard");
+        var overlay = document.getElementById("overlay");
+        // Hiển thị hoặc ẩn christmas-card bằng cách thêm hoặc loại bỏ lớp 'show'
+        if (christmasCard.style.display === "none") {
+            christmasCard.style.display = "block";
+            overlay.style.display = "block";
+        } else {
+            christmasCard.style.display = "none";
+        }
+    }
+    function hideChristmasCard() {
+        var christmasCard = document.getElementById("christmasCard");
+        var overlay = document.getElementById("overlay");
+
+        // Hiển thị hoặc ẩn christmas-card bằng cách thêm hoặc loại bỏ lớp 'show'
+        // if (christmasCard.style.display === "block") {
+        //     christmasCard.style.display = "none";
+        //     overlay.style.display = "none";
+        // } else {
+        //     christmasCard.style.display = "block";
+        // }
+        overlay.style.display = "none";
+        christmasCard.style.display = "none";
+    }
+</script>
+<script type="text/javascript">
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame; var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"]; var transformProperty = getSupportedPropertyName(transforms); var snowflakes = []; var browserWidth; var browserHeight; var numberOfSnowflakes = 100; var resetPosition = false; function setup() { window.addEventListener("DOMContentLoaded", generateSnowflakes, false); window.addEventListener("resize", setResetFlag, false) } setup(); function getSupportedPropertyName(b) { for (var a = 0; a < b.length; a++) { if (typeof document.body.style[b[a]] != "undefined") { return b[a] } } return null } function Snowflake(b, a, d, e, c) { this.element = b; this.radius = a; this.speed = d; this.xPos = e; this.yPos = c; this.counter = 0; this.sign = Math.random() < 0.5 ? 1 : -1; this.element.style.opacity = 0.5 + Math.random(); this.element.style.fontSize = 4 + Math.random() * 30 + "px" } Snowflake.prototype.update = function () { this.counter += this.speed / 5000; this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40; this.yPos += Math.sin(this.counter) / 40 + this.speed / 30; setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos)); if (this.yPos > browserHeight) { this.yPos = -50 } }; function setTranslate3DTransform(a, c, b) { var d = "translate3d(" + c + "px, " + b + "px, 0)"; a.style[transformProperty] = d } function generateSnowflakes() { var b = document.querySelector(".snowflake"); var h = b.parentNode; browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var d = 0; d < numberOfSnowflakes; d++) { var j = b.cloneNode(true); h.appendChild(j); var e = getPosition(50, browserWidth); var a = getPosition(50, browserHeight); var c = 5 + Math.random() * 40; var g = 4 + Math.random() * 10; var f = new Snowflake(j, g, c, e, a); snowflakes.push(f) } h.removeChild(b); moveSnowflakes() } function moveSnowflakes() { for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.update() } if (resetPosition) { browserWidth = document.documentElement.clientWidth; browserHeight = document.documentElement.clientHeight; for (var b = 0; b < snowflakes.length; b++) { var a = snowflakes[b]; a.xPos = getPosition(50, browserWidth); a.yPos = getPosition(50, browserHeight) } resetPosition = false } requestAnimationFrame(moveSnowflakes) } function getPosition(b, a) { return Math.round(-1 * b + Math.random() * (a + 2 * b)) } function setResetFlag(a) { resetPosition = true };
+</script>
+</html>
